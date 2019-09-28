@@ -6,9 +6,9 @@ class FrontPage extends Component {
     render() {
         return (
             <div>
-                <Shelf/>
-                <Shelf/>
-                <Shelf/>
+                <Shelf title = "Currently Reading" />
+                <Shelf title = "Want to read"/>
+                <Shelf title = "Read"/>
              <Link to="/search" className="open-search">
               Add a book
             </Link> 
