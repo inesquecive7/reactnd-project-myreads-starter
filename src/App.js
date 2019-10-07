@@ -9,8 +9,19 @@ import { domainToASCII } from 'url';
 
 class BooksApp extends React.Component {
   state = {
-    showSearchPage: false
+    showSearchPage: false,
+    books : []
   }
+
+  componentDidMount(){
+    BooksAPI.getAll().then((books)=> {
+    this.setState(
+      () => ({books}
+        ))
+        console.log(this.state);
+    })
+  }
+
 
   render() {
     return (

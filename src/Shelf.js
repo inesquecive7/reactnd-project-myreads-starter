@@ -13,13 +13,13 @@ class Shelf extends Component {
                 <div className="bookshelf-books">
                     <ol className="books-grid">
                         <li>
-                        <Book/>
+                            <Book/>
                         </li>
                         <li>
-                        <Book/>
+                            <Book/>
                         </li>
                         <li>
-                        <Book/>
+                            <Book/>
                         </li>
                     </ol>
                 </div>

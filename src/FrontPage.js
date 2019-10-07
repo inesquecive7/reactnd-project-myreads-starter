@@ -3,15 +3,32 @@ import Shelf from './Shelf.js';
 import {Link} from "react-router-dom";
 
 class FrontPage extends Component {
+
+    state = {
+        books:this.props.myBooks
+    }
+
     render() {
         return (
-            <div>
-                <Shelf title = "Currently Reading" />
-                <Shelf title = "Want to read"/>
-                <Shelf title = "Read"/>
-             <Link to="/search" className="open-search">
-              Add a book
-            </Link> 
+            
+            <div className="list-books">
+                <div className="list-books-title">
+                    <h1>MyReads</h1>
+                </div>
+                <div className="list-books-content">
+                    <div>
+                        <div className="bookshelf">
+
+                        <Shelf title = "Currently Reading" books = {this.state.books}/>
+
+                        <Shelf title = "Want to read" books = {this.state.books}/>
+
+                        <Shelf title = "Read" books = {this.state.books}/>
+
+                        </div>
+                    </div>
+                 </div>
+                <Link to="/search" className="open-search">Add a book</Link> 
             </div>
         );
     }
