@@ -12,18 +12,26 @@ class BooksApp extends React.Component {
     showSearchPage: false,
     books : []
   }
-
+  
   componentDidMount(){
     BooksAPI.getAll().then((books)=> {
     this.setState(
       () => ({books}
         ))
-        console.log(this.state);
     })
   }
 
-
+ 
   render() {
+
+    const allBooks = this.state.books; // here, if I am failing to access the shelf inside each book
+
+    console.log(allBooks);
+    
+    const currentReads = allBooks.filter(book => allBooks[0].title === "React");
+
+    console.log(currentReads);
+
     return (
     <div className = 'app'>
       <Route

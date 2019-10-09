@@ -5,9 +5,10 @@ import {Link} from "react-router-dom";
 class FrontPage extends Component {
 
     state = {
-        books:this.props.myBooks
+        frontBooks:this.props.myBooks
     }
 
+    
     render() {
         return (
             
@@ -19,11 +20,11 @@ class FrontPage extends Component {
                     <div>
                         <div className="bookshelf">
 
-                        <Shelf title = "Currently Reading" books = {this.state.books}/>
+                        <Shelf title = "Currently Reading" books = {this.state.frontBoks}/>
 
-                        <Shelf title = "Want to read" books = {this.state.books}/>
+                        <Shelf title = "Want to read" books = {this.state.frontBooks}/>
 
-                        <Shelf title = "Read" books = {this.state.books}/>
+                        <Shelf title = "Read" books = {this.state.frontBooks}/>
 
                         </div>
                     </div>

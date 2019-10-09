@@ -3,10 +3,14 @@ import Book from './Book';
 
 class Shelf extends Component {
     state = {
-        titleShelf:this.props.title
-    }
-    render() {
+        titleShelf:this.props.title,
+        allBooks: this.props.books
+    };
+
+     render() {
+
         const {titleShelf:title} = this.state;
+      
         return (
             <div className='book-shelf'>           
             <h2 className="bookshelf-title">{title}</h2>
