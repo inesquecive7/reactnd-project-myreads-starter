@@ -18,19 +18,18 @@ class BooksApp extends React.Component {
     this.setState(
       () => ({books}
         ))
+        console.log(this.state.books)
     })
   }
-
  
   render() {
 
-    const allBooks = this.state.books; // here, if I am failing to access the shelf inside each book
-
-    console.log(allBooks);
+    const {books} = this.state; 
+    console.log({books});
     
-    const currentReads = allBooks.filter(book => allBooks[0].title === "React");
-
-    console.log(currentReads);
+    const currentReads = books.filter(book => book.shelf === 'currentlyReading');
+    const futureReads = books.filter(book => book.shelf === 'wantToRead');
+    const pastReads = books.filter(book => book.shelf === 'read');
 
     return (
     <div className = 'app'>
