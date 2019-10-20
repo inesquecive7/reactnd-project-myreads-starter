@@ -18,19 +18,17 @@ class BooksApp extends React.Component {
     this.setState(
       () => ({books}
         ))
-        console.log(this.state.books)
     })
   }
  
   render() {
-
-    const {books} = this.state; 
-    console.log({books});
     
+    const {books} = this.state;   
     const currentReads = books.filter(book => book.shelf === 'currentlyReading');
     const futureReads = books.filter(book => book.shelf === 'wantToRead');
     const pastReads = books.filter(book => book.shelf === 'read');
-
+    console.log(pastReads);
+    
     return (
     <div className = 'app'>
       <Route
@@ -38,7 +36,9 @@ class BooksApp extends React.Component {
       path="/"
       render={() => (
         <FrontPage
-        myBooks = {this.state.books}
+        presentReads = {currentReads}
+        reads ={pastReads}
+        willReads = {futureReads}
         />
       )}
       />
