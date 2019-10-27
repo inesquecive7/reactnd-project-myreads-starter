@@ -1,10 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Shelf from './Shelf';
 
-class Selector extends Component {
-    render() {
+function Selector (props) {
+
+    const {book, onUpdateBookShelf} = props
+
         return (
-            <div>
-                     <select>
+            <div className = "book-shelf-changer">
+                     <select
+                     value = {Shelf || "none"}
+                     onChange = {event => onUpdateBookShelf(event.target.value)}
+                     >
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
@@ -14,6 +20,6 @@ class Selector extends Component {
             </div>
         );
     }
-}
+
 
 export default Selector;

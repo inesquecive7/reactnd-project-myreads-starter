@@ -4,12 +4,11 @@ import FrontPage from './FrontPage.js';
 import SearchPage from './SearchPage.js';
 import {Route} from 'react-router-dom';
 import './App.css';
-import { domainToASCII } from 'url';
+
 
 
 class BooksApp extends React.Component {
   state = {
-    showSearchPage: false,
     books : []
   }
   
@@ -20,15 +19,34 @@ class BooksApp extends React.Component {
         ))
     })
   }
+
+  updateBookShelf = (book,shelf) => {
+    BooksAPI.update(book,shelf).then(()=>{
+      this.setState(currentState => {
+        const location = currentState.books.findIndex(c => c.id === book.id);
+        if (location !== -1){
+          return{
+            books: [
+              ...currentState.books.slice(0,location),
+              Object.assign({},currentState.books[location], {shelf}),
+              ...currentState.books.slice(location + 1)
+            ]
+          };
+        }
+
+        const books = currentState.books.slice();
+        books.push(Object.assign({}, book, { shelf }));
+        return {books};
+      });
+    });
+  };
+
+  searchBooks = query => {
+    return BooksAPI.search(query).then(books => books);
+  };
  
   render() {
-    
-    const {books} = this.state;   
-    const currentReads = books.filter(book => book.shelf === 'currentlyReading');
-    const futureReads = books.filter(book => book.shelf === 'wantToRead');
-    const pastReads = books.filter(book => book.shelf === 'read');
-    console.log(pastReads);
-    
+        
     return (
     <div className = 'app'>
       <Route
@@ -36,16 +54,22 @@ class BooksApp extends React.Component {
       path="/"
       render={() => (
         <FrontPage
-        presentReads = {currentReads}
-        reads ={pastReads}
-        willReads = {futureReads}
+        items = {this.state.books}
+        onUpdateBookShelf = {(book,shelf) => {
+          this.updateBookShelf(book,shelf)
+        }}
+
         />
       )}
       />
+
      <Route
      path="/search"
-     render = {() => (
-      <SearchPage books = {this.state.books}/>
+     render = {(history) => (
+      <SearchPage 
+      items = {this.state.books}
+      onSearchBooks = {this.searchBooks}
+      onUpdateBookShelf = {this.updateBookShelf}/>
      )}
      />
          </div>  
