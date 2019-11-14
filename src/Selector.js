@@ -1,15 +1,12 @@
 import React from 'react';
-import Shelf from './Shelf';
 
 function Selector (props) {
-
-    const {onUpdateBookShelf} = props
-
+    const { shelf, onUpdateBookShelf} = props;
         return (
             <div className = "book-shelf-changer">
                      <select
-                     value = {Shelf || "none"}
-                     onChange = {event => onUpdateBookShelf(event.target.value)}
+                     value={shelf || "none"}
+                     onChange={event => onUpdateBookShelf(event.target.value)}
                      >
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>

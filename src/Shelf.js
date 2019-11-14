@@ -4,16 +4,16 @@ import Book from './Book';
 
 function Shelf (props){
 
-        const {books, onUpdateShelf} = props
+        const {books, onUpdateBookShelf} = props
         
         return (
              <ol className="books-grid">
                {books.map(book => (
                  <li key = {book.id}>
-                   <Book book = {book} onUpdateShelf = {onUpdateShelf}/>
+                   <Book book = {book} onUpdateBookShelf = {onUpdateBookShelf}/>
                   </li>
                ))}
-                    </ol>
+               </ol>
         );
     }
 

@@ -18,17 +18,20 @@ class BooksApp extends React.Component {
       () => ({books}
         ))
     })
+    console.log(this.state);
   }
 
-  updateBookShelf = (book,shelf) => {
+
+  
+  onUpdateBookShelf = (book, shelf) => {
     BooksAPI.update(book,shelf).then(()=>{
       this.setState(currentState => {
         const location = currentState.books.findIndex(c => c.id === book.id);
         if (location !== -1){
           return{
             books: [
-              ...currentState.books.slice(0,location),
-              Object.assign({},currentState.books[location], {shelf}),
+              ...currentState.books.slice(0, location),
+              Object.assign({}, currentState.books[location], { shelf }),
               ...currentState.books.slice(location + 1)
             ]
           };
@@ -36,7 +39,7 @@ class BooksApp extends React.Component {
 
         const books = currentState.books.slice();
         books.push(Object.assign({}, book, { shelf }));
-        return {books};
+        return { books };
       });
     });
   };
@@ -54,20 +57,19 @@ class BooksApp extends React.Component {
       path="/"
       render={() => (
         <FrontPage
-        items = {this.state.books}
-        onUpdateBookShelf = {(book,shelf) => {
-          this.updateBookShelf(book,shelf)
+        books = {this.state.books}
+        onUpdateBookShelf = {(book, shelf) => {
+          this.onUpdateBookShelf(book, shelf)
         }}
 
         />
       )}
       />
-
      <Route
      path="/search"
-     render = {(history) => (
+     render = {({history}) => (
       <SearchPage 
-      items = {this.state.books}
+      books = {this.state.books}
       onSearchBooks = {this.searchBooks}
       onUpdateBookShelf = {this.updateBookShelf}/>
      )}

@@ -4,9 +4,11 @@ import {Link} from "react-router-dom";
 
 function FrontPage(props) {
 
-    const {books, onUpdateBookShelf} = props;
+    const { books, onUpdateBookShelf } = props;
 
-    const currentlyReadingBooks = books.filter(book => book.shelf === 'currentlyReading');
+    const currentlyReadingBooks = books.filter(
+    book => book.shelf === 'currentlyReading'
+    );
     const futureReadBooks= books.filter(book => book.shelf === 'wantToRead');
     const pastReadBooks = books.filter(book => book.shelf === 'read');
  
@@ -35,23 +37,23 @@ function FrontPage(props) {
                         books = {futureReadBooks}
                         onUpdateBookShelf = {onUpdateBookShelf}
                         />
-                        </div>
+                    </div>
                     </div>
                     <div className="bookshelf">
                         <h2 className = "bookshelf-title">Want to Read</h2>
-                        <div className = "bookshelf-books">
+                         <div className = "bookshelf-books">
                         <Shelf 
-                        books = {pastReadBooks}
-                        onUpdateBookShelf = {onUpdateBookShelf}
+                        books={pastReadBooks}
+                        onUpdateBookShelf={onUpdateBookShelf}
                         />
-                        </div>
                     </div>
                  </div>
+                </div>
                 </div>
                 <div className="open-search">
                 <Link to="/search">Add a book</Link> 
             </div>
-            </div>
+        </div>
         );
     }
 

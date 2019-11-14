@@ -2,7 +2,7 @@ import React from 'react';
 import Selector from './Selector';
 import defaultThumbnail from './icons/defaultThumbnail.png'
 
-function Book(props){
+function Book(props) {
 
   const {book, onUpdateBookShelf} = props
   const bookStyle = {
@@ -23,7 +23,7 @@ function Book(props){
                             <div className="book-shelf-changer">
                           <Selector
                           shelf = {book.shelf}
-                          onUpdateBookShelf = {shelf => onUpdateBookShelf (book.shelf)}
+                          onUpdateBookShelf = {shelf => onUpdateBookShelf (book, shelf)}
                           />
                             </div>
                           </div>
