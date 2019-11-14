@@ -22,7 +22,7 @@ class BooksApp extends React.Component {
   }
 
 
-  
+ //assistance from Udacity mentor to get book location
   updateBookShelf = (book, shelf) => {
     BooksAPI.update(book,shelf).then(()=>{
       this.setState(currentState => {
