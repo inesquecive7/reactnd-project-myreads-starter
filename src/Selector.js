@@ -3,7 +3,7 @@ import Shelf from './Shelf';
 
 function Selector (props) {
 
-    const {book, onUpdateBookShelf} = props
+    const {onUpdateBookShelf} = props
 
         return (
             <div className = "book-shelf-changer">

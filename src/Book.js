@@ -1,20 +1,19 @@
 import React from 'react';
 import Selector from './Selector';
-import defaultThumbnail from './defaultThubnail.png'
+import defaultThumbnail from './icons/defaultThumbnail.png'
 
 function Book(props){
 
   const {book, onUpdateBookShelf} = props
-
   const bookStyle = {
     width:128,
     height: 193
   }
 
-  if (book,imageLinks && book.imageLinks.thumbnail) {
+  if (book.imageLinks && book.imageLinks.thumbnail) {
     bookStyle.backgroundImage = `url(${book.imageLinks.thumbnail})`
   }else{
-    bookStyle.backgroundImage = `url(${defaultThumbanil})`
+    bookStyle.backgroundImage = `url(${defaultThumbnail})`
   }
         return (
             <div>
