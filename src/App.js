@@ -23,7 +23,7 @@ class BooksApp extends React.Component {
 
 
   
-  onUpdateBookShelf = (book, shelf) => {
+  updateBookShelf = (book, shelf) => {
     BooksAPI.update(book,shelf).then(()=>{
       this.setState(currentState => {
         const location = currentState.books.findIndex(c => c.id === book.id);

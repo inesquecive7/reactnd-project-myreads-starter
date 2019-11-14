@@ -19,7 +19,7 @@ function Book(props) {
             <div>
                         <div className="book">
                           <div className="book-top">
-                            <div className="book-cover" style={bookStyle}></div>
+                            <div className="book-cover" style={bookStyle}/>
                             <div className="book-shelf-changer">
                           <Selector
                           shelf = {book.shelf}
