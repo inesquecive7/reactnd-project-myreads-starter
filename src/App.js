@@ -59,7 +59,7 @@ class BooksApp extends React.Component {
         <FrontPage
         books = {this.state.books}
         onUpdateBookShelf = {(book, shelf) => {
-          this.onUpdateBookShelf(book, shelf)
+          this.updateBookShelf(book, shelf)
         }}
 
         />
